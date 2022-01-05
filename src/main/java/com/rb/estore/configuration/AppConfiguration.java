@@ -12,13 +12,12 @@ import java.sql.SQLException;
 @Configuration
 @ComponentScan("com.rb.estore")
 public class AppConfiguration implements WebMvcConfigurer {
-
     @Bean
     public Connection connection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("From bean");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/estore", "root", "");
+            System.out.println("From bean connection");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/estore", "root", "root");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -28,3 +27,4 @@ public class AppConfiguration implements WebMvcConfigurer {
         return null;
     }
 }
+
