@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.Optional;
 
 @Repository
-public class UserDAO implements InterfaceUserDAO {
+public class UserDao implements InterfaceUserDao {
 
     @Autowired
     Connection connection;

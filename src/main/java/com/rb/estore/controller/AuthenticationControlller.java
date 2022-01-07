@@ -1,6 +1,7 @@
-package com.rb.estore.controllers;
+package com.rb.estore.controller;
 
 import com.rb.estore.model.view.RegisterUser;
+import com.rb.estore.service.InterfaceAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AuthenticationControlller {
 
     @Autowired
-    AuthenticationService authenticationService;
+    InterfaceAuthenticationService interfaceAuthenticationService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registerShow(Model model) {
         model.addAttribute("ruser", new RegisterUser());
         return "registration";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -26,7 +32,7 @@ public class AuthenticationControlller {
         System.out.println("User name: ");
         System.out.println(registerUser.getName());
 
-        this.authenticationService.register(registerUser);
+        this.interfaceAuthenticationService.register(registerUser);
 
         return "redirect:/main";
     }
