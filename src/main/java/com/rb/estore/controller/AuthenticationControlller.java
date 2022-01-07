@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthenticationControlller {
@@ -22,15 +23,22 @@ public class AuthenticationControlller {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
+    public String loginShow() {
         return "login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@RequestParam String login, @RequestParam String password) {
+        this.interfaceAuthenticationService.login(login, password);
+
+        return "redirect:/login";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registerUser(@ModelAttribute RegisterUser registerUser) {
 
-        System.out.println("User name: ");
-        System.out.println(registerUser.getName());
+        // System.out.println("User name: ");
+        // System.out.println(registerUser.getName());
 
         this.interfaceAuthenticationService.register(registerUser);
 

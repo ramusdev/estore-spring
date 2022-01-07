@@ -40,6 +40,29 @@ public class UserDao implements InterfaceUserDao {
 
     @Override
     public Optional<User> getUserByLogin(String login) {
+        String sql = "SELECT * FROM users WHERE login = ?";
+
+        try {
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            preparedStatement.setString(1, login);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("name"));
+                user.setSurname((resultSet.getString("surname")));
+                user.setLogin((resultSet.getString("login")));
+                user.setPassword(resultSet.getString("password"));
+
+                return Optional.of(user);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return Optional.empty();
     }
 }
