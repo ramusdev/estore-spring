@@ -7,16 +7,12 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false, length = 100)
     private String title;
-    @Column(nullable = false)
-    private long code;
-    @Column(nullable = false)
+    private int code;
     private double price;
-    @Column(nullable = false)
     private int quantity;
 
-    public Product(int id, String title, long code, double price, int quantity) {
+    public Product(int id, String title, int code, double price, int quantity) {
         this.id = id;
         this.title = title;
         this.code = code;
@@ -48,7 +44,7 @@ public class Product {
         return code;
     }
 
-    public void setCode(long code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

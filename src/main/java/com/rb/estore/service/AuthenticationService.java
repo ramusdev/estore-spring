@@ -3,6 +3,7 @@ package com.rb.estore.service;
 import com.rb.estore.database.InterfaceUserDao;
 import com.rb.estore.model.User;
 import com.rb.estore.model.view.RegisterUser;
+import com.rb.estore.session.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -13,6 +14,9 @@ import java.util.Optional;
 public class AuthenticationService implements InterfaceAuthenticationService {
     @Autowired
     InterfaceUserDao interfaceUserDao;
+
+    @Autowired
+    SessionObject sessionObject;
 
     @Override
     public void register(RegisterUser registerUser) {
@@ -25,5 +29,7 @@ public class AuthenticationService implements InterfaceAuthenticationService {
         Optional<User> user = this.interfaceUserDao.getUserByLogin(login);
 
         System.out.println(user.get().getName());
+
+        this.sessionObject.setUser(user.get());
     }
 }
