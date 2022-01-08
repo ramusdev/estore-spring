@@ -26,11 +26,18 @@ public class ProductDao implements InterfaceProductDao {
 
             while (resultSet.next()) {
                 Product product = new Product();
+                product.setId(resultSet.getInt("id"));
+                product.setTitle(resultSet.getString("title"));
+                product.setCode(resultSet.getString("code"));
+                product.setQuantity(resultSet.getInt("quantity"));
+                product.setPrice(resultSet.getDouble("price"));
+
+                products.add(product);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return products;
     }
 }

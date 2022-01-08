@@ -8,11 +8,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    private int code;
+    private String code;
     private double price;
     private int quantity;
 
-    public Product(int id, String title, int code, double price, int quantity) {
+    public Product(int id, String title, String code, double price, int quantity) {
         this.id = id;
         this.title = title;
         this.code = code;
@@ -40,11 +40,11 @@ public class Product {
         this.title = title;
     }
 
-    public long getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
