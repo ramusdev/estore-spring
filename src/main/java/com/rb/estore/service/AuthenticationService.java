@@ -26,10 +26,14 @@ public class AuthenticationService implements InterfaceAuthenticationService {
 
     @Override
     public void login(String login, String password) {
-        Optional<User> user = this.interfaceUserDao.getUserByLogin(login);
+        Optional<User> userOptional = this.interfaceUserDao.getUserByLogin(login);
 
-        System.out.println(user.get().getName());
+        if (userOptional.isEmpty()) {
+            return;
+        } else if (! userOptional.get().getPassword().equals(DigestUtils.md5Hex(password))) {
+            return;
+        }
 
-        this.sessionObject.setUser(user.get());
+        this.sessionObject.setUser(userOptional.get());
     }
 }

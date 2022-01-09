@@ -29,3 +29,8 @@
     color: white;
     background: red;
 }
+
+.product {
+    display: flex;
+    flex-direction: row;
+}
