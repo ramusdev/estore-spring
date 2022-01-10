@@ -9,4 +9,18 @@ public class Cart {
     public List<CartItem> getCartItems() {
         return cartItems;
     }
+
+    public double getSum() {
+        double sum = 0.0;
+
+        for (CartItem cartItem : cartItems) {
+            sum += cartItem.getProduct().getPrice() * cartItem.getQuantity();
+        }
+
+        return Math.round(sum * 100) / 100.0;
+    }
+
+    public void clear() {
+        this.cartItems = new ArrayList<>();
+    }
 }
