@@ -32,6 +32,13 @@ public class CartService implements InterfaceCartService {
 
         // System.out.println(productOptional.get().getTitle());
 
+        for (CartItem cartItem : this.sessionObject.getCart().getCartItems()) {
+            if (cartItem.getProduct().getId() == productId) {
+                cartItem.incrementQuantity();
+                return;
+            }
+        }
+
         CartItem cartItem = new CartItem(0, productOptional.get(), 1);
         this.sessionObject.getCart().getCartItems().add(cartItem);
 

@@ -15,6 +15,10 @@ public class CartItem {
 
     }
 
+    public void incrementQuantity() {
+        this.quantity++;
+    }
+
     public int getId() {
         return id;
     }
