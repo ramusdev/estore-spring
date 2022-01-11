@@ -43,11 +43,11 @@ public class Order {
         for (CartItem cartItem : this.cartItems) {
             this.price += cartItem.getProduct().getPrice() * cartItem.getQuantity();
             System.out.println("Price in");
-            // System.out.println(cartItem.getProduct().getPrice());
+            System.out.println(cartItem.getProduct().getPrice());
             System.out.println(this.price);
         }
 
-        this.price = Math.round(this.price * 100) / 100;
+        this.price = Math.round(this.price * 100) / 100.0;
     }
 
     public int getId() {
