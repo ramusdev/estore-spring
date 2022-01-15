@@ -1,44 +1,6 @@
-#logo {
-    display: flex;
-    justify-content: center;
+body {
+    background: #efefef;
 }
-
-#content {
-    align-items: center;
-}
-
-#menu {
-    display: flex;
-    justify-content: center;
-}
-
-#menu a {
-    margin: 5px 15px;
-    text-decoration: none;
-    color: black;
-    transition: color 0.5s;
-    transition: background 0.5s;
-    padding: 5px 15px;
-    font-size: 20px;
-    border-radius: 10px;
-}
-
-#menu a:hover {
-    color: white;
-    background: red;
-}
-
-.product {
-    display: flex;
-    flex-direction: row;
-}
-
-.item {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 200px;
-}
-.text {
-    margin: 5px;
+.container {
+    max-width: 960px;
 }

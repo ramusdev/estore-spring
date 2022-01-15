@@ -26,7 +26,7 @@ public class CommonController {
     public String mainShow(Model model) {
         model.addAttribute("rproducts", this.interfaceProductService.getAllProducts());
 
-        return "main";
+        return "main-b";
     }
 
 
