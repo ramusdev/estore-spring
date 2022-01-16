@@ -32,7 +32,7 @@ public class CartController {
         Cart cart = this.sessionObject.getCart();
         model.addAttribute("cart", cart);
 
-        return "cart";
+        return "cart-b";
     }
 
     @RequestMapping(value="/cart/clear", method = RequestMethod.GET)

@@ -24,7 +24,7 @@ public class ProductController {
         model.addAttribute("rproduct", new Product());
 
         if (this.sessionObject.isLogged()) {
-            return "addproduct";
+            return "addproduct-b";
         }
 
         return "redirect:/main";
