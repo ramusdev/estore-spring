@@ -30,6 +30,10 @@ public class CartController {
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String cartShow(Model model) {
         Cart cart = this.sessionObject.getCart();
+
+        System.out.println("-------------------------------------------------");
+        System.out.println(cart.getOrderItems().toString());
+
         model.addAttribute("cart", cart);
 
         return "cart-b";

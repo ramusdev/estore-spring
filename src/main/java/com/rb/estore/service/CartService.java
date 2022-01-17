@@ -1,7 +1,7 @@
 package com.rb.estore.service;
 
 import com.rb.estore.database.InterfaceProductDao;
-import com.rb.estore.model.CartItem;
+import com.rb.estore.model.OrderItem;
 import com.rb.estore.model.Product;
 import com.rb.estore.session.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +32,15 @@ public class CartService implements InterfaceCartService {
 
         // System.out.println(productOptional.get().getTitle());
 
-        for (CartItem cartItem : this.sessionObject.getCart().getCartItems()) {
-            if (cartItem.getProduct().getId() == productId) {
-                cartItem.incrementQuantity();
+        for (OrderItem orderItem : this.sessionObject.getCart().getOrderItems()) {
+            if (orderItem.getProduct().getId() == productId) {
+                orderItem.incrementQuantity();
                 return;
             }
         }
 
-        CartItem cartItem = new CartItem(0, productOptional.get(), 1);
-        this.sessionObject.getCart().getCartItems().add(cartItem);
+        OrderItem orderItem = new OrderItem(0, productOptional.get(), 1);
+        this.sessionObject.getCart().getOrderItems().add(orderItem);
 
     }
 }

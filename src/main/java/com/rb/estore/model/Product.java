@@ -2,7 +2,7 @@ package com.rb.estore.model;
 
 import javax.persistence.*;
 
-@Entity(name = "product")
+@Entity(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

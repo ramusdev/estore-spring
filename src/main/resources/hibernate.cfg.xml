@@ -26,9 +26,12 @@
 
         <property name="show_sql">true</property>
 
-        <property name="hbm2ddl.auto">none</property>
+        <property name="hbm2ddl.auto">update</property>
 
         <mapping class="com.rb.estore.model.User"/>
+        <mapping class="com.rb.estore.model.Product"/>
+        <mapping class="com.rb.estore.model.Order"/>
+        <mapping class="com.rb.estore.model.OrderItem"/>
 
     </session-factory>
 </hibernate-configuration>

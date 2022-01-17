@@ -20,7 +20,7 @@
 
     <legend>Cart of product</legend>
     <ol class="list-group list-group-numbered">
-        <li th:each="item : ${cart.cartItems}" class="list-group-item d-flex justify-content-between align-items-start">
+        <li th:each="item : ${cart.orderItems}" class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
                 <div th:text="${item.product.title}" class="fw-bold"></div>
                 <h6 th:inline="text" class="card-subtitle mb-4 text-muted">[[${item.product.price}]] usd</h6>

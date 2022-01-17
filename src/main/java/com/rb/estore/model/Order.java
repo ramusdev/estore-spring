@@ -1,33 +1,40 @@
 package com.rb.estore.model;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@Entity(name = "orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     private double price;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private List<CartItem> cartItems = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<OrderItem> orderItems = new HashSet<>();
     private LocalDateTime date;
 
-    public Order(int id, User user, double price, Status status, List<CartItem> cartItems, LocalDateTime date) {
+    public Order(int id, User user, double price, Status status, Set<OrderItem> orderItems, LocalDateTime date) {
         this.id = id;
         this.user = user;
         this.price = price;
         this.status = status;
-        this.cartItems = cartItems;
+        this.orderItems = orderItems;
         this.date = date;
     }
 
-    public Order(User user, List<CartItem> cartItems) {
+    public Order(User user, Set<OrderItem> orderItems) {
         this.user = user;
         this.status = Status.NEW;
-        this.cartItems = cartItems;
+        this.orderItems = orderItems;
         this.date = LocalDateTime.now();
 
         calculateOrderPrice();
@@ -40,14 +47,18 @@ public class Order {
     private void calculateOrderPrice() {
         this.price = 0.0;
 
+        /*
         for (CartItem cartItem : this.cartItems) {
             this.price += cartItem.getProduct().getPrice() * cartItem.getQuantity();
             System.out.println("Price in");
             System.out.println(cartItem.getProduct().getPrice());
             System.out.println(this.price);
         }
+        */
 
-        this.price = Math.round(this.price * 100) / 100.0;
+        // this.price = Math.round(this.price * 100) / 100.0;
+
+        this.price = 2;
     }
 
     public int getId() {
@@ -82,13 +93,14 @@ public class Order {
         this.status = status;
     }
 
-    public List<CartItem> getCartItems() {
-        return cartItems;
+    public Set<OrderItem> getCartItems() {
+        return orderItems;
     }
 
-    public void setCartItems(List<CartItem> cartItems) {
-        this.cartItems = cartItems;
+    public void setCartItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
+
 
     public LocalDateTime getDate() {
         return date;

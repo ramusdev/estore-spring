@@ -1,20 +1,19 @@
-package com.rb.estore.database;
+package com.rb.estore.database.jdbc;
 
-import com.rb.estore.model.CartItem;
+import com.rb.estore.database.InterfaceOrderItemDao;
+import com.rb.estore.database.InterfaceOrderDao;
 import com.rb.estore.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 
-@Repository
 public class OrderDao implements InterfaceOrderDao {
 
     @Autowired
     Connection connection;
 
     @Autowired
-    InterfaceCartItemDao interfaceCartItemDao;
+    InterfaceOrderItemDao interfaceOrderItemDao;
 
 
     @Override
@@ -37,9 +36,11 @@ public class OrderDao implements InterfaceOrderDao {
                 order.setId(resultSet.getInt(1));
             }
 
+            /*
             for (CartItem cartItem : order.getCartItems()) {
                 this.interfaceCartItemDao.addOrderItem(cartItem, order.getId());
             }
+            */
 
         } catch (SQLException e) {
             e.printStackTrace();

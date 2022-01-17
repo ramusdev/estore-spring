@@ -6,6 +6,8 @@ import com.rb.estore.session.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+
 @Service
 public class OrderService implements InterfaceOrderService {
 
@@ -17,10 +19,7 @@ public class OrderService implements InterfaceOrderService {
 
     @Override
     public void confirmOrder() {
-        Order order = new Order(this.sessionObject.getUser(), this.sessionObject.getCart().getCartItems());
-        System.out.println("Order all price");
-        System.out.println(order.getPrice());
-
+        Order order = new Order(this.sessionObject.getUser(), new HashSet<>(this.sessionObject.getCart().getOrderItems()));
         this.interfaceOrderDao.addOrder(order);
     }
 }

@@ -9,7 +9,7 @@
 
 <div id="content">
     <h2>Cart</h2>
-    <div th:each="item : ${cart.cartItems}" class="item">
+    <div th:each="item : ${cart.orderItems}" class="item">
         <div th:text="${item.product.id}" class="text"></div>
         <div th:text="${item.product.title}" class="text"></div>
         <div th:text="${item.product.code}" class="text"></div>

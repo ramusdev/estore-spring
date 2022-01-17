@@ -1,17 +1,23 @@
 package com.rb.estore.model;
 
-public class CartItem {
+import javax.persistence.*;
+
+@Entity(name = "order_items")
+public class OrderItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @ManyToOne(fetch = FetchType.EAGER)
     private Product product;
     private int quantity;
 
-    public CartItem(int id, Product product, int quantity) {
+    public OrderItem(int id, Product product, int quantity) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
     }
 
-    public CartItem() {
+    public OrderItem() {
 
     }
 
