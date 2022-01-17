@@ -1,19 +1,17 @@
-package com.rb.estore.database;
+package com.rb.estore.database.jdbc;
 
 import com.rb.estore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.Optional;
 
-@Repository
-public class UserDao implements InterfaceUserDao {
+public class UserDaoO {
 
     @Autowired
     Connection connection;
 
-    @Override
+
     public void addUser(User user) {
         try {
             String sql = "INSERT INTO users VALUES (?, ?, ?, ?, ?)";
@@ -33,12 +31,12 @@ public class UserDao implements InterfaceUserDao {
         }
     }
 
-    @Override
+
     public Optional<User> getUserById(int id) {
         return Optional.empty();
     }
 
-    @Override
+
     public Optional<User> getUserByLogin(String login) {
         String sql = "SELECT * FROM users WHERE login = ?";
 
