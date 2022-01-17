@@ -1,16 +1,16 @@
 package com.rb.estore.database.jdbc;
 
+import com.rb.estore.database.InterfaceUserDao;
 import com.rb.estore.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.*;
 import java.util.Optional;
 
-public class UserDaoO {
+public class UserDao implements InterfaceUserDao {
 
     @Autowired
     Connection connection;
-
 
     public void addUser(User user) {
         try {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class AuthenticationControlller {
+public class AuthenticationController {
 
     @Autowired
     InterfaceAuthenticationService interfaceAuthenticationService;
