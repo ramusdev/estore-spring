@@ -47,18 +47,11 @@ public class Order {
     private void calculateOrderPrice() {
         this.price = 0.0;
 
-        /*
-        for (CartItem cartItem : this.cartItems) {
-            this.price += cartItem.getProduct().getPrice() * cartItem.getQuantity();
-            System.out.println("Price in");
-            System.out.println(cartItem.getProduct().getPrice());
-            System.out.println(this.price);
+        for (OrderItem orderItem : this.orderItems) {
+            this.price += orderItem.getProduct().getPrice() * orderItem.getQuantity();
         }
-        */
 
-        // this.price = Math.round(this.price * 100) / 100.0;
-
-        this.price = 2;
+        this.price = Math.round(this.price * 100) / 100.0;
     }
 
     public int getId() {

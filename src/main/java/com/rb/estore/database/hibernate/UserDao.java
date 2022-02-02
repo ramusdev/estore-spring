@@ -42,7 +42,20 @@ public class UserDao implements InterfaceUserDao {
 
     @Override
     public Optional<User> getUserById(int id) {
-        return Optional.empty();
+        Session session  = this.sessionFactory.openSession();
+
+        Query<User> query = session.createQuery("FROM com.rb.estore.model.User WHERE id = :id");
+        query.setParameter("id", id);
+
+        try {
+            User user = query.getSingleResult();
+            return Optional.of(user);
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return Optional.empty();
+        } finally {
+            session.close();
+        }
     }
 
     @Override

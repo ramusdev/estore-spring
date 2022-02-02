@@ -6,6 +6,7 @@ import com.rb.estore.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.*;
+import java.util.Optional;
 
 public class OrderDao implements InterfaceOrderDao {
 
@@ -45,5 +46,10 @@ public class OrderDao implements InterfaceOrderDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Optional<Order> getOrderById(int orderId) {
+        return Optional.empty();
     }
 }

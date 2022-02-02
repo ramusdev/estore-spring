@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService implements InterfaceProductService {
@@ -20,5 +21,16 @@ public class ProductService implements InterfaceProductService {
     @Override
     public void addProduct(Product product) {
         this.interfaceProductDao.addProduct(product);
+    }
+
+    @Override
+    public Product getProductById(int productId) {
+        Optional<Product> productOptional = interfaceProductDao.getProductById(productId);
+
+        if (productOptional.isEmpty()) {
+            return null;
+        }
+
+        return productOptional.get();
     }
 }
