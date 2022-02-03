@@ -4,14 +4,12 @@ import com.rb.estore.database.InterfaceProductDao;
 import com.rb.estore.model.Order;
 import com.rb.estore.model.Product;
 import com.rb.estore.model.User;
+import com.rb.estore.model.dto.OrderDto;
 import com.rb.estore.service.InterfaceOrderService;
 import com.rb.estore.service.InterfaceProductService;
 import com.rb.estore.service.InterfaceUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,16 +39,23 @@ public class RestCommonController {
     }
 
     @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
-    public Order getOrder(@PathVariable int id) {
-        return interfaceOrderService.getOrderById(id);
+    public OrderDto getOrder(@PathVariable int id) {
+        Order order = interfaceOrderService.getOrderById(id);
+        OrderDto orderDto = new OrderDto(order);
+
+        return orderDto;
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     public User getUser(@PathVariable int id) {
         User user = interfaceUserService.getUserById(id);
-        System.out.println("------------------ User ------------------");
-        System.out.println(user.getName());
 
         return user;
+    }
+
+    @RequestMapping(value = "/product/addproduct", method = RequestMethod.POST)
+    public void addProduct(@RequestBody Product product) {
+        System.out.println("--------- Add product -------------------------------");
+        System.out.println(product.getTitle());
     }
 }

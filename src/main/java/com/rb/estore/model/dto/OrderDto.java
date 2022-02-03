@@ -32,7 +32,7 @@ public class OrderDto {
         this.orderItems = getOrderItems();
         this.date = order.getDate();
 
-        this.user = "http://localhost:8081/user/" + order.getUser().getId();
+        this.user = "http://localhost:8081/rest/user/" + order.getUser().getId();
     }
 
     public OrderDto() {
