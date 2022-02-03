@@ -29,4 +29,5 @@ public class RestProductController {
     public void addProduct(@RequestBody Product product) {
         interfaceProductService.addProduct(product);
     }
+    
 }
